@@ -4,10 +4,19 @@
 const std = @import("std");
 const testing = std.testing;
 
-pub export fn add(a: i32, b: i32) i32 {
-    return a + b;
+pub export fn zt_isalpha(c: u8) bool {
+	if ((c >= 'A' and c <= 'Z') or (c >= 'a' and c <= 'z')) {
+		return true;
+	}
+	return false;
 }
 
-test "basic add functionality" {
-    try testing.expect(add(3, 7) == 10);
+test "zt_isalpha" {
+	try testing.expect(zt_isalpha('c') == true);
+	try testing.expect(zt_isalpha('0') == false);
+	try testing.expect(zt_isalpha('Z') == true);
+	try testing.expect(zt_isalpha(0) == false);
+	try testing.expect(zt_isalpha('P') == true);
+	try testing.expect(zt_isalpha('\n') == false);
+	try testing.expect(zt_isalpha('N') == true);
 }
